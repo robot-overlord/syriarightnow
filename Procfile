@@ -1,2 +1,2 @@
 web: gunicorn syriarightnow:app --log-file=-
-worker: python tweetstream.py
+worker: python -u tweetstream.py
