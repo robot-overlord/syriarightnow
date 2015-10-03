@@ -1,8 +1,9 @@
 import os
 from flask import Flask
-import tweetstream
 
 app = Flask(__name__)
 
+@app.route('/')
+
 def syriarightnow():
-    tweetstream.call()
+    return 'Hello World!'
