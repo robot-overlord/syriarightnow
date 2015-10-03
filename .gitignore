@@ -59,6 +59,3 @@ target/
 
 # venv
 venv
-
-# environment
-.env
