@@ -1,3 +1,3 @@
 web: gunicorn syriarightnow:app --log-file=-
-worker: python worker.py
-tweetstream: python enqueue_tweetstream.py
+worker: python ./tasks/worker.py
+tweetstream: python ./tasks/enqueue_tweetstream.py
