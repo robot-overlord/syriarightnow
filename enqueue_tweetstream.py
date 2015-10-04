@@ -1,6 +1,8 @@
-from rq import Queue
-from worker import conn
+# from rq import Queue
+# from worker import conn
 import tweetstream
+#
+# q = Queue(connection=conn)
+# result = q.enqueue(tweetstream.call())
 
-q = Queue(connection=conn)
-result = q.enqueue(tweetstream.call())
+tweetstream.call()
