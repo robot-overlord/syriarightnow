@@ -46,6 +46,7 @@ class Listener(StreamListener):
         matches = filter(lambda keyword: keyword in tweet, keywords)
 
         if any(matches):
+            print "Match on " + str(matches)
             self.tweet(tweet)
         else:
             print "Do nothing. No keyword match."
