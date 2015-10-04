@@ -28,7 +28,7 @@ class Listener(StreamListener):
             print "UID:" + str(uid)
 
             if (uid in user_ids):
-                tweet = json.loads(data)["text"] + "something"
+                tweet = json.loads(data)["text"]
                 print "tweeting " + tweet + "..."
                 self.api.update_status(status = tweet)
                 print "Done."
