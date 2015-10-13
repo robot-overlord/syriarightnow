@@ -1,6 +1,12 @@
 # Syria Right Now
 A warning system for civilians amidst the Syrian Civil War
 
+# Project Status
+
+| Branch         | Integration | Code Quality | Test Coverage |
+|----------------|-------------|--------------|---------------|
+| Master         | `not configured` | `not configured` | `not configured` |
+
 ## Up Next
 - [ ] Tests
 - [ ] Pull data from Facebook
@@ -39,3 +45,13 @@ A warning system for civilians amidst the Syrian Civil War
 | Upgrading dependencies          | :arrow_up:          | `:arrow_up:`          |
 | Downgrading dependencies        | :arrow_down:        | `:arrow_down:`        |
 | Fix linter warning              | :shirt:             | `:shirt:`             |
+
+# Style Guides
+| Language        | Guide                                   |
+|-----------------|----------------------------------------:|
+| Python          | [Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/) |
+| Sass (`*.sass`) | Essentially enforced by the syntax      |
+| Sass (`*.scss`) | [Official Sass Styleguide](http://sass-lang.com/styleguide) |
+| JavaScript      | [AirBnb](https://github.com/airbnb/javascript) |
+| Git Commits     | [GitHub Guide](https://github.com/blog/926-shiny-new-commit-styles) |
+| Pull Requests   | [Pull Requests](https://github.com/blog/1943-how-to-write-the-perfect-pull-request) |
