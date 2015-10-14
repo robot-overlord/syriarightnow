@@ -6,10 +6,10 @@ from tweepy import API
 from tweepy.streaming import StreamListener
 from listener import Listener
 
-ckey = os.environ['CKEY']
-consumer_secret = os.environ['CONSUMER_SECRET']
-access_token_key = os.environ['ACCESS_TOKEN_KEY']
-access_token_secret = os.environ['ACCESS_TOKEN_SECRET']
+ckey = os.environ['TWITTER_CKEY']
+consumer_secret = os.environ['TWITTER_CONSUMER_SECRET']
+access_token_key = os.environ['TWITTER_ACCESS_TOKEN_KEY']
+access_token_secret = os.environ['TWITTER_ACCESS_TOKEN_SECRET']
 
 # uids we are currently tracking
 user_ids = [
