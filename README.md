@@ -20,22 +20,22 @@ A warning system for civilians amidst the Syrian Civil War
 - Ensure you have Pip installed
 - Ensure you have VirtualEnv installed
 - Clone the repository
- ```
- git clone git@github.com:robot-overlord/syriarightnow.git
- ```
+```
+git clone git@github.com:robot-overlord/syriarightnow.git
+```
 - Change into project root directory
- ```
- cd syriarightnow
- ```
+```
+cd syriarightnow
+```
 - Load up Virtual Env
 ```
 source venv/bin/activate
 ```
 - Copy `.env.example` and rename as `.env` and replace placeholder text with correct keys
 - Start the Application
- ```
- foreman start
- ```
+```
+foreman start
+```
 
 ## Emoji tags for commits, PRs and comments
 | Platform             | Symbol           | Markdown           |
