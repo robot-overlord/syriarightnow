@@ -16,26 +16,26 @@ A warning system for civilians amidst the Syrian Civil War
 - [ ] Add symbols based on keywords
 
 ## Installation
-1. Ensure you have Python 2.7.9 installed
-2. Ensure you have Pip installed
-3. Ensure you have VirtualEnv installed
-4. Clone the repository
-```
-git clone git@github.com:robot-overlord/syriarightnow.git
-```
-5. Change into project root directory
-```
-cd syriarightnow
-```
-6. Load up Virtual Env
+- Ensure you have Python 2.7.9 installed
+- Ensure you have Pip installed
+- Ensure you have VirtualEnv installed
+- Clone the repository
+ ```
+ git clone git@github.com:robot-overlord/syriarightnow.git
+ ```
+- Change into project root directory
+ ```
+ cd syriarightnow
+ ```
+- Load up Virtual Env
 ```
 source venv/bin/activate
 ```
-7. Copy `.env.example` and rename as `.env` and replace placeholder text with correct keys
-8. Start the Application
-```
-foreman start
-```
+- Copy `.env.example` and rename as `.env` and replace placeholder text with correct keys
+- Start the Application
+ ```
+ foreman start
+ ```
 
 ## Emoji tags for commits, PRs and comments
 | Platform             | Symbol           | Markdown           |
