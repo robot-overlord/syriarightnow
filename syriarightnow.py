@@ -1,5 +1,4 @@
 import os
-import tweetstream
 from flask import Flask
 
 app = Flask(__name__)
