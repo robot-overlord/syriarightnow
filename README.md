@@ -16,9 +16,16 @@ A warning system for civilians amidst the Syrian Civil War
 - [ ] Add symbols based on keywords
 
 ## Installation
-- Ensure you have Python 2.7.9 installed
-- Ensure you have Pip installed
+- Ensure you have Python 2.7.9 and Pip installed.
+  - On OSX, you can use [HomeBrew](http://brew.sh/)
+  ```
+  brew install python
+  ```
+  - On Windows, download and install from [python.org](https://www.python.org/downloads/windows/)
 - Ensure you have VirtualEnv installed
+```
+pip install virtualenv
+```
 - Clone the repository
 ```
 git clone git@github.com:robot-overlord/syriarightnow.git
@@ -29,7 +36,12 @@ cd syriarightnow
 ```
 - Load up Virtual Env
 ```
+virtualenv venv
 source venv/bin/activate
+```
+- Install dependencies
+```
+pip install -r requirements.txt
 ```
 - Copy `.env.example` and rename as `.env` and replace placeholder text with correct keys
 - Start the Application
