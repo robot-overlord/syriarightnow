@@ -1,3 +1,3 @@
-from social.twitter import tweetstream
+from twitter import tweetstream
 
 tweetstream.call()

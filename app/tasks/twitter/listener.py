@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+
 import time
 import json
 import sys
+from tasks import filter
 from tweepy.streaming import StreamListener
 
 class Listener(StreamListener):
@@ -10,24 +12,10 @@ class Listener(StreamListener):
         self.api = twitter_api
 
     def on_data(self, data):
-        keywords = [
-        	u"كيماوي",
-        	u"غاز سام",
-        	u"كلور",
-        	u"اختناق",
-        	u"سام",
-        	u"غازات سامة",
-        	u"الكلور",
-        	u"الكيماوي",
-        	u"الاختناق",
-        	u"الغازات السامة",
-        	u"السام"
-        ]
-
         try:
             data = json.loads(data)
             if data["text"]:
-                self.filter(data, keywords)
+                self.verify(data)
                 return True
 
         except BaseException, e:
@@ -38,18 +26,13 @@ class Listener(StreamListener):
     def on_error(self, status):
         print(status)
 
-    def filter(self, data, keywords):
+    def verify(self, data):
         print "Incoming tweet from " + data["user"]["screen_name"]
         tweet = data["text"]
         print tweet
 
-        matches = filter(lambda keyword: keyword in tweet, keywords)
-
-        if any(matches):
-            print "Match on " + str(matches)
+        if any(filter.call(tweet)):
             self.tweet(tweet)
-        else:
-            print "Do nothing. No keyword match."
 
         time.sleep(5)
 
