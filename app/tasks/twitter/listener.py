@@ -3,19 +3,27 @@
 import time
 import json
 import sys
-from tasks import filter
+import pika
 from tweepy.streaming import StreamListener
 
 class Listener(StreamListener):
-    def __init__(self, twitter_api, start_time = time.time()):
-        self.time = start_time
-        self.api = twitter_api
+    def __init__(self):
+        #setup rabbitMQ Connection
+    	connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+
+    	self.channel = connection.channel()
+
+    	#set max queue size
+    	args = {"x-max-length": 2000}
+
+    	self.channel.queue_declare(queue='social_data', arguments=args)
 
     def on_data(self, data):
         try:
             data = json.loads(data)
             if data["text"]:
                 self.verify(data)
+                time.sleep(5)
                 return True
 
         except BaseException, e:
@@ -31,12 +39,7 @@ class Listener(StreamListener):
         tweet = data["text"]
         print tweet
 
-        if any(filter.call(tweet)):
-            self.tweet(tweet)
-
-        time.sleep(5)
-
-    def tweet(self, text):
-        print "tweeting " + text + "..."
-        self.api.update_status(status = text)
-        print "Done."
+        # queue the tweet
+        self.channel.basic_publish(exchange='',
+                                   routing_key='social_data',
+                                   body=data["text"])
