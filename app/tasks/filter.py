@@ -18,7 +18,6 @@ def call(sentence, keywords=keywords):
     matches = filter(lambda keyword: keyword in sentence.decode("utf-8"), keywords)
 
     if any(matches):
-        print "Match on " + str(matches)
         return matches
     else:
         print "Do nothing. No keyword match."

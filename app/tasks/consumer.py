@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+import sys
 import pika
 import json
 import keys
 import time
 import filter
-import twitter_api
+from twitter_api import TwitterAPI
 from tweepy import API
 from tweepy import OAuthHandler
 
@@ -24,7 +25,7 @@ def on_message(channel, basic_deliver, properties, body):
         print "Done consuming " + body
 
     except BaseException, e:
-        print("failed in consumer on message, ", str(e))
+        print "failed on line " + format(sys.exc_info()[-1].tb_lineno) + " of Consumer#on_message, with error: " + str(e)
         time.sleep(5)
         pass
 
@@ -34,25 +35,20 @@ def on_channel_open(channel):
         channel.basic_consume(on_message, "social_data")
 
     except BaseException, e:
-        print("failed in consumer on channel open, ", str(e))
+        print "failed in Consumer#on_channel_open, " + str(e)
         time.sleep(5)
         pass
-
-    # # Cancel the consumer and return any pending messages
-    # requeued_messages = channel.cancel()
-    # print "Requeued %i messages" % requeued_messages
 
 def tweet(text):
     try:
         print "tweeting " + text + "..."
-        twitter_api.connection.update_status(status = text)
+        TwitterAPI().connection.update_status(status = text)
         print "Done."
 
     except BaseException, e:
         print("failed in consumer tweet, ", str(e))
         time.sleep(5)
         pass
-
 
 connection = pika.SelectConnection(on_open_callback=on_open)
 

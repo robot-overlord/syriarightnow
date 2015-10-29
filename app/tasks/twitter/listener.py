@@ -37,9 +37,9 @@ class Listener(StreamListener):
     def verify(self, data):
         print "Incoming tweet from " + data["user"]["screen_name"]
         tweet = data["text"]
-        print tweet
 
-        # queue the tweet
+        # enqueue the tweet
+        # print "enqueuing tweet " + tweet.encode("utf-8")
         self.channel.basic_publish(exchange='',
                                    routing_key='social_data',
                                    body=data["text"])
