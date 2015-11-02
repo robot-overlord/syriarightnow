@@ -4,12 +4,14 @@ import time
 import json
 import sys
 import pika
+import os
 from tweepy.streaming import StreamListener
 
 class Listener(StreamListener):
     def __init__(self):
         #setup rabbitMQ Connection
-    	connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+        host = os.environ['CLOUDAMQP_URL']
+        connection = pika.BlockingConnection(pika.ConnectionParameters(host=host))
 
     	self.channel = connection.channel()
 
