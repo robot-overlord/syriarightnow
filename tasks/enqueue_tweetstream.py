@@ -1,3 +1,0 @@
-import tweetstream
-
-tweetstream.call()
