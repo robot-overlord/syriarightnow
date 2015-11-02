@@ -39,7 +39,6 @@ class Listener(StreamListener):
         tweet = data["text"]
 
         # enqueue the tweet
-        # print "enqueuing tweet " + tweet.encode("utf-8")
         self.channel.basic_publish(exchange='',
                                    routing_key='social_data',
                                    body=data["text"])
