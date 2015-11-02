@@ -5,14 +5,19 @@ import json
 import sys
 import pika
 import os
+import urlparse
 from tweepy.streaming import StreamListener
 
 class Listener(StreamListener):
     def __init__(self):
         #setup rabbitMQ Connection
-        host = os.environ['CLOUDAMQP_URL']
-        connection = pika.BlockingConnection(pika.ConnectionParameters(host=host))
+        url_str = os.environ.get('CLOUDAMQP_URL', 'amqp://guest:guest@localhost//')
+        url = urlparse.urlparse(url_str)
+        params = pika.ConnectionParameters(host=url.hostname,
+                                           virtual_host=url.path[1:],
+                                           credentials=pika.PlainCredentials(url.username, url.password))
 
+        connection = pika.BlockingConnection(params)
     	self.channel = connection.channel()
 
     	#set max queue size

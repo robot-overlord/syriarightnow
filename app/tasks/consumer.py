@@ -5,6 +5,8 @@ import pika
 import json
 import keys
 import time
+import os
+import urlparse
 import filter
 from twitter_api import TwitterAPI
 from tweepy import API
@@ -50,7 +52,12 @@ def tweet(text):
         time.sleep(5)
         pass
 
-connection = pika.SelectConnection(on_open_callback=on_open)
+url_str = os.environ.get('CLOUDAMQP_URL', 'amqp://guest:guest@localhost//')
+url = urlparse.urlparse(url_str)
+params = pika.ConnectionParameters(host=url.hostname,
+                                   virtual_host=url.path[1:],
+                                   credentials=pika.PlainCredentials(url.username, url.password))
+connection = pika.SelectConnection(params, on_open_callback=on_open)
 
 try:
     # Step #2 - Block on the IOLoop
