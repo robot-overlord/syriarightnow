@@ -52,11 +52,9 @@ def tweet(text):
         time.sleep(5)
         pass
 
-url_str = os.environ.get('CLOUDAMQP_URL', 'amqp://guest:guest@localhost//')
-url = urlparse.urlparse(url_str)
-params = pika.ConnectionParameters(host=url.hostname,
-                                   virtual_host=url.path[1:],
-                                   credentials=pika.PlainCredentials(url.username, url.password))
+url = os.environ.get('CLOUDAMQP_URL', 'amqp://guest:guest@localhost/%2f')
+params = pika.URLParameters(url)
+params.socket_timeout = 5
 connection = pika.SelectConnection(params, on_open_callback=on_open)
 
 try:
